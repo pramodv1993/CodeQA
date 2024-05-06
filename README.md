@@ -23,6 +23,8 @@ See demo [here](https://drive.google.com/file/d/1T998EXyMlSp5AAx7G5ot6vAOE6gsYsa
 
 ### More technical details:
 - UI: [Streamlit](https://streamlit.io/) is used for building a basic interactive app.
+Screenshot: <br>
+<img src="media/ui.png" alt="drawing" width="400"/><br>
 - API: [Fast API](https://fastapi.tiangolo.com/) is used for implementing RESTful services. More details about the supported APIs can be found [here](/api/).
 - VectorDB: Self-hosted [Qdrant](https://qdrant.tech/) database is used as a vector database.
 
