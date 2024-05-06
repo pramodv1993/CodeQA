@@ -2,7 +2,7 @@
 - Supports 2 APIs:
     - Ingest (`/ingest`):
         - Given a URL, this API attemps to perform the following steps:
-        <img src="../images/data_pipe.png" alt="drawing" width="500"/><br>
+        <img src="../media/data_pipe.png" alt="drawing" width="500"/><br>
         - The API primarily leverages the [LangChain](https://www.langchain.com/) framework.
         - Filtering involves filtering for only textual data from the repo.
         - Metadata is of 2 levels:
