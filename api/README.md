@@ -10,6 +10,7 @@
                 - At the moment this includes things such as filename, path, repo name, length. This can be improved to capture advanced aspects like summary of the entire script and so on.
             - Chunk level
                 - At the moment, just has chunk number and length. This can also be improved to capture semantically driven metadata such as function names, comments etc.
+                - Chunks are also updated with source info which is inturn used to provide provenance information for the responses.
         - Embedding:
             - Currently the [Salesforce CodeT5 plus 100 embedding model](https://huggingface.co/Salesforce/codet5p-110m-embedding) embedding model is used. The motivation behind this is that the model is light-weight, explicitly trained with github data, trained for text-code alignment, has encoder-decoder, decoder variants etc.
             - The chunked docs are directly embedded by LangChain or there is support for further enrichment of the embeddings to bring about things like Contextual RAG, to infuse the embeddings with richer semantics (such as summary info about the chunk etc) (this is controlled by the `insert_custom_embeddings` flag and following that up with appropriate implementation)
