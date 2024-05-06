@@ -1,0 +1,34 @@
+[RAG]
+PLAIN = """
+You are an expert in analyzing scripts from any programming language.'
+Use the following pieces of retrieved text which also includes code snippets. If you do not know the answer, just say that you do not know.
+Keep the answer concise.
+<Question>
+{question}
+</Question>
+<Context>
+{context}
+</Context>
+"""
+# ----------------------------------------------
+#rag prompt in chat style
+[[RAG.CHAT]]
+system="You are an expert in analyzing scripts from any programming language."
+[[RAG.CHAT]]
+human="""
+Use the following pieces of retrieved text which also includes code snippets. If you do not know the answer, just say that you do not know.
+Keep the answer concise.
+
+<Question>
+{question}
+</Question>
+
+<Context>
+{context}
+</Context>
+"""
+
+
+
+
+
