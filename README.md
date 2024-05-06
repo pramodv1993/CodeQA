@@ -10,9 +10,7 @@ Given a URL of a Github repository, the proposed solution enables the user to ha
 - VecDB: A vector database that supports CRUD of vector embeddings as well as some metadata information.
 
 ### Demo:
-<video width="520" height="440" controls>
-  <source src="media/code_qa.mov" type="video/mp4">
-</video>
+See demo [here](https://drive.google.com/file/d/1T998EXyMlSp5AAx7G5ot6vAOE6gsYsar/view?usp=sharing)
 
 ### QuickStart:
 - Include a `.env` file with a key for `OPENAI_API_KEY=""` in the `API` module (ie in [this](/api/) path)
