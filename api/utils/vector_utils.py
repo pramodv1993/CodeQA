@@ -14,6 +14,11 @@ from utils.injectors import (
 )
 
 
+def _is_collection_exists(repo_dir: str):
+    qdrant_client = qdrant_client_instance()
+    return qdrant_client.collection_exists(repo_dir)
+
+
 def _batch_insert(
     chunked_docs: List[Document],
     custom_chunk_embeddings: List,
