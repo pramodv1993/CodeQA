@@ -9,7 +9,7 @@ def init():
     if "messages" not in st.session_state:
         st.session_state["messages"] = []
 
-#for testing github hooks
+#for testing github hooks - v2
 init()
 render_data_ingestion_window()
 render_chat_window()
