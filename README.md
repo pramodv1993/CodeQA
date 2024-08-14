@@ -1,8 +1,7 @@
 ## CodeQA
 Problem Statement: <br>.
 Given a URL of a Github repository, the proposed solution enables the user to have a priliminary understanding of the repository by asking the system in a conversation style setup.
-#testing webhook - v4
-#testing webhook - v4.1
+
 ### High Level Design:
 <img src="media/design_codeqa.jpg" alt="drawing" width="500"/><br>
 3 main modules, each of which function as a standlone dockerized microservice:
