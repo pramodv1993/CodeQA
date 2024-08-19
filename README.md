@@ -1,5 +1,5 @@
 ## CodeQA
-Problem Statement: <br>.
+Problem Statement: <br>
 Given a URL of a Github repository, the proposed solution enables the user to have a priliminary understanding of the repository by asking the system in a conversation style setup.
 
 ### High Level Design:
