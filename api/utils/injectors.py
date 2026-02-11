@@ -1,8 +1,7 @@
 import toml
 
 from qdrant_client import QdrantClient
-from langchain.chat_models import ChatOpenAI
-from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_openai import ChatOpenAI
 
 from utils.custom_classes import CodeT5PlusEmbeddings
 
@@ -28,7 +27,7 @@ def prompts() -> dict:
     return prompt_config
 
 
-def llm_instance() -> BaseChatModel:
+def llm_instance() -> ChatOpenAI:
     return llm
 
 

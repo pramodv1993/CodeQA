@@ -53,7 +53,7 @@ class CodeT5PlusEmbeddings(Embeddings):
     # model: "Salesforce/codet5p-110m-embedding"
     def __init__(
         self,
-        model_path: str = "models/codet5p-110m-embedding/snapshots/94f88f95672b1d4b0cc715c6011001a74f892bdd",
+        model_path: str = "models/codet5p-110m-embedding/snapshots/d9f3a534af4252f04b10cd9f78e05037542d10f6",
     ) -> None:
         # @TODO accept config from properties file
         # model_name = "Salesforce/codet5p-110m-embedding"

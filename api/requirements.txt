@@ -6,4 +6,8 @@ qdrant-client==1.9.0
 python-dotenv==1.0.1
 toml==0.10.2
 openai
-langchain
+langchain-core
+langchain-text-splitters
+langchain-community
+langchain-openai
+langchain-classic

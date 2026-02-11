@@ -1,9 +1,9 @@
 from typing import List
 
 from langchain_community.vectorstores import Qdrant
-from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.output_parser import StrOutputParser
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 from utils.injectors import (
     embeddings_model_instance,
