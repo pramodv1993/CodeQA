@@ -1,5 +1,6 @@
 from typing import List, Any
 
+import torch
 from transformers import AutoModel, AutoTokenizer
 from langchain_core.embeddings import Embeddings
 from pydantic import BaseModel
@@ -66,13 +67,29 @@ class CodeT5PlusEmbeddings(Embeddings):
         )
         super().__init__()
 
-    def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        inputs = self.tokenizer.batch_encode_plus(
-            texts, return_tensors="pt", truncation=True, padding=True
-        ).to(self.device)
-        return self.model(inputs["input_ids"]).tolist()
+    def embed_documents(
+        self, texts: List[str], batch_size: int = 16
+    ) -> List[List[float]]:
+        # Embed in small batches: feeding a whole repo's chunks in a single
+        # forward pass pads every chunk to the longest sequence and spikes
+        # memory enough to OOM-kill the API process mid-request.
+        embeddings: List[List[float]] = []
+        for start in range(0, len(texts), batch_size):
+            batch = texts[start : start + batch_size]
+            inputs = self.tokenizer.batch_encode_plus(
+                batch, return_tensors="pt", truncation=True, padding=True
+            ).to(self.device)
+            with torch.no_grad():
+                batch_embeddings = self.model(
+                    inputs["input_ids"], attention_mask=inputs["attention_mask"]
+                )
+            embeddings.extend(batch_embeddings.tolist())
+        return embeddings
 
     def embed_query(self, query: str) -> List[float]:
-        return self.model(
-            self.tokenizer.encode(query, return_tensors="pt").to(self.device)
-        ).tolist()[0]
+        inputs = self.tokenizer.encode(
+            query, return_tensors="pt", truncation=True
+        ).to(self.device)
+        with torch.no_grad():
+            embedding = self.model(inputs)
+        return embedding.tolist()[0]

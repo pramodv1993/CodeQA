@@ -22,7 +22,10 @@ services:
     ports:
       - 8001:8001
     env_file:
-      - ./.env 
+      - ./.env
+    depends_on:
+      qdrant:
+        condition: service_started
 
   qdrant:
     image: qdrant/qdrant:latest

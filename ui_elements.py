@@ -26,15 +26,22 @@ def render_data_ingestion_window():
         if submitted and _is_valid_url():
             response = None
             with st.status("Ingesting data.."):
-                response = requests.post(
-                    "http://api:8001/ingest",
-                    json={"repo_url": github_url, "insert_custom_embeddings": False},
-                )
-            if response and response.status_code == 201:
+                try:
+                    response = requests.post(
+                        "http://api:8001/ingest",
+                        json={
+                            "repo_url": github_url,
+                            "insert_custom_embeddings": False,
+                        },
+                        timeout=600,
+                    )
+                except requests.exceptions.RequestException as e:
+                    st.error(f"Could not reach the ingestion API: {e}")
+            if response is not None and response.status_code == 201:
                 st.markdown(
                     """Ingested to the VectorDB, you can check [Here](http://localhost:6333/dashboard#/collections)"""
                 )
-            else:
+            elif response is not None:
                 st.markdown("""Encountered some error""")
 
 
